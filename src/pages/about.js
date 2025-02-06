@@ -14,10 +14,10 @@ export default function About() {
           transition={{ duration: 0.5 }} 
           className="text-center mb-10"
         >
-          <h1 className="text-5xl font-extrabold mb-4">
+          <h1 className="text-5xl font-extrabold mb-4 text-blue-400">
             Waseem Shahzad
           </h1>
-          <h2 className="text-2xl font-semibold text-blue-500">Software Engineer</h2>
+          <h2 className="text-2xl font-semibold text-gray-300">Software Engineer | Application Consultant</h2>
         </motion.div>
 
         {/* Contact Information Section */}
@@ -27,48 +27,36 @@ export default function About() {
           transition={{ delay: 0.3, duration: 0.5 }} 
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 p-6 rounded-lg shadow-md"
         >
-          <div className="flex items-center space-x-4">
-            <FiMail className="text-blue-500 text-xl" />
-            <span className="hover:underline">engrwaseemshahzad134@gmail.com</span>
-          </div>
-          <div className="flex items-center space-x-4">
-            <FiPhone className="text-blue-500 text-xl" />
-            <span>+92 3419648099</span>
-          </div>
-          <div className="flex items-center space-x-4">
-            <FiGithub className="text-blue-500 text-xl" />
-            <span className="hover:underline">Waseem-786</span>
-          </div>
-          <div className="flex items-center space-x-4">
-            <FiBriefcase className="text-blue-500 text-xl" />
-            <a href="https://www.studypool.com/MalikNajaf?aid=najafsays123" target="_blank" rel="noreferrer" className="hover:underline">
-              studypool.com/MalikNajaf?aid=najafsays123
-            </a>
-          </div>
-          <div className="flex items-center space-x-4">
-            <FiLinkedin className="text-blue-500 text-xl" />
-            <a href="https://www.linkedin.com/in/waseem-shahzad-b4854522a" target="_blank" rel="noreferrer" className="hover:underline">
-              linkedin.com/in/waseem-shahzad-b4854522a
-            </a>
-          </div>
-          <div className="flex items-center space-x-4">
-            <FiMapPin className="text-blue-500 text-xl" />
-            <span>Milat Town, Faisalabad</span>
-          </div>
-          <div className="flex items-center space-x-4">
-            <FiGlobe className="text-blue-500 text-xl" />
-            <a href="https://usvisahelp.net" target="_blank" rel="noreferrer" className="hover:underline">
-              usvisahelp.net
-            </a>
-          </div>
-          <div className="flex items-center space-x-4">
-            <FiGlobe className="text-blue-500 text-xl" />
-            <a href="https://tvonnet.co" target="_blank" rel="noreferrer" className="hover:underline">
-              tvonnet.co
-            </a>
-          </div>
+          {[{
+            icon: <FiMail className="text-blue-500 text-xl" />, text: "engrwaseemshahzad134@gmail.com"
+          }, {
+            icon: <FiPhone className="text-blue-500 text-xl" />, text: "+92 3419648099"
+          }, {
+            icon: <FiGithub className="text-blue-500 text-xl" />, text: "Waseem-786"
+          }, {
+            icon: <FiBriefcase className="text-blue-500 text-xl" />, text: "Studypool Freelancer", link: "https://www.studypool.com/MalikNajaf?aid=najafsays123"
+          }, {
+            icon: <FiLinkedin className="text-blue-500 text-xl" />, text: "linkedin.com/in/waseem-shahzad-b4854522a", link: "https://www.linkedin.com/in/waseem-shahzad-b4854522a"
+          }, {
+            icon: <FiMapPin className="text-blue-500 text-xl" />, text: "Milat Town, Faisalabad"
+          }, {
+            icon: <FiGlobe className="text-blue-500 text-xl" />, text: "usvisahelp.net", link: "https://usvisahelp.net"
+          }, {
+            icon: <FiGlobe className="text-blue-500 text-xl" />, text: "tvonnet.co", link: "https://tvonnet.co"
+          }].map((item, index) => (
+            <div key={index} className="flex items-center space-x-4">
+              {item.icon}
+              {item.link ? (
+                <a href={item.link} target="_blank" rel="noreferrer" className="hover:underline">
+                  {item.text}
+                </a>
+              ) : (
+                <span className="hover:underline">{item.text}</span>
+              )}
+            </div>
+          ))}
         </motion.section>
-
+        
         {/* Education Section */}
         <motion.section 
           initial={{ opacity: 0, x: -50 }} 

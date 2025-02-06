@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { FaLaptopCode, FaCogs, FaDatabase, FaMobileAlt, FaCode, FaChartLine, FaUsers } from 'react-icons/fa';
+
 
 export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
@@ -35,7 +37,7 @@ export default function Home() {
     <div>
       <Head>
         <title>Waseem Shahzad | Software Engineer</title>
-        <meta name="description" content="Portfolio of Waseem Shahzad, a dedicated Software Engineer proficient in Python, PL/SQL, Django, and Oracle Flexcube with a strong background in web development and database design." />
+        <meta name="description" content="Portfolio of Waseem Shahzad, a Software Engineer specializing in web and app development, an expert in Oracle Flexcube, and an Application Consultant." />
       </Head>
       <Navbar toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
       
@@ -46,7 +48,7 @@ export default function Home() {
             Hi, I'm <span className="text-blue-400">Waseem Shahzad</span>
           </h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 1 }} className="text-xl mt-4 max-w-xl mx-auto">
-            Software Engineer specializing in **Oracle Flexcube, Django, and Database Systems** with expertise in Python, PL/SQL, and Web Development.
+            Passionate Software Engineer with expertise in web & app development, Oracle Flexcube, and technical consulting.
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6, duration: 1 }}>
             <Link href="/projects">
@@ -61,28 +63,56 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* About Section */}
-      <section className="container mx-auto p-10 text-center">
-        <h2 className="text-4xl font-bold">About Me</h2>
-        <motion.p initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }} className="text-lg mt-4 max-w-2xl mx-auto">
-          Passionate **Software Engineer** with a Bachelor's in Software Engineering and hands-on experience in **Oracle Flexcube, Django, PL/SQL, and Python**. Skilled in debugging, database design, and system optimization.
+      {/* About Me Section */}
+      <section className="bg-gray-900 text-white p-12 text-center rounded-lg shadow-lg">
+        <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6 }}>
+          <FaLaptopCode className="text-7xl text-blue-400 mx-auto mb-6" />
+        </motion.div>
+        <h2 className="text-5xl font-extrabold">About Me</h2>
+        <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="text-lg mt-6 max-w-3xl mx-auto leading-relaxed">
+          I am a Software Engineer specializing in web and app development, enterprise solutions, and technical consulting. With expertise in Oracle Flexcube, PL/SQL, Django, and modern web technologies, I thrive on solving complex problems and building efficient, user-centric applications.
         </motion.p>
       </section>
 
-      {/* Skills Section */}
-      <section className="bg-gray-100 dark:bg-gray-800 p-10">
-        <h2 className="text-4xl font-bold text-center">My Skills</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-6 max-w-4xl mx-auto text-center">
-          {["Python", "PL/SQL", "Django", "Oracle Flexcube", "Java", "C++", "Web Development", "MongoDB"].map((skill, index) => (
-            <motion.div key={index} initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: index * 0.2, duration: 0.5 }} className="p-4 bg-white dark:bg-gray-700 shadow-md rounded-lg text-lg font-semibold">
-              {skill}
+      {/* Expertise Section */}
+      <section className="bg-gray-200 dark:bg-gray-800 p-12">
+        <h2 className="text-4xl font-bold text-center">My Expertise</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8 max-w-6xl mx-auto text-center">
+          {[
+            { title: "Web & App Development", icon: <FaMobileAlt className='text-blue-500 text-6xl mx-auto' />, description: "Building high-performance, scalable applications with modern frameworks." },
+            { title: "Oracle Flexcube Consulting", icon: <FaCogs className='text-blue-500 text-6xl mx-auto' />, description: "Expert in Flexcube core banking solutions, customization, and support." },
+            { title: "Database Optimization", icon: <FaDatabase className='text-blue-500 text-6xl mx-auto' />, description: "Optimizing databases for high availability, security, and performance." },
+          ].map((expertise, index) => (
+            <motion.div key={index} initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: index * 0.2, duration: 0.5 }} className="p-8 bg-white dark:bg-gray-700 shadow-lg rounded-lg">
+              {expertise.icon}
+              <h3 className="text-2xl font-semibold mt-4">{expertise.title}</h3>
+              <p className="mt-4 text-lg">{expertise.description}</p>
             </motion.div>
           ))}
         </div>
       </section>
 
+      {/* Featured Work Section */}
+      <section className="bg-gray-900 text-white p-12 text-center rounded-lg shadow-lg">
+        <h2 className="text-5xl font-extrabold">Featured Work</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8 max-w-6xl mx-auto text-center">
+          {[
+            { title: "Innovative Web Apps", icon: <FaCode className='text-blue-400 text-6xl mx-auto' />, description: "Building fast, scalable, and user-friendly web applications using the latest technologies." },
+            { title: "Data Analytics", icon: <FaChartLine className='text-blue-400 text-6xl mx-auto' />, description: "Analyzing and optimizing business performance with cutting-edge data solutions." },
+            { title: "Team Collaboration", icon: <FaUsers className='text-blue-400 text-6xl mx-auto' />, description: "Seamlessly working with teams to bring ideas into reality through technology." },
+          ].map((feature, index) => (
+            <motion.div key={index} initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: index * 0.2, duration: 0.5 }} className="p-8 bg-white dark:bg-gray-700 shadow-lg rounded-lg">
+              {feature.icon}
+              <h3 className="text-2xl font-semibold mt-4">{feature.title}</h3>
+              <p className="mt-4 text-lg">{feature.description}</p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+
       {/* Contact Section */}
-      <section className="bg-gray-900 text-white p-10 text-center">
+      <section className="bg-gray-200 dark:bg-gray-800 p-12 text-white text-center">
         <h2 className="text-4xl font-bold">Get in Touch</h2>
         <p className="text-lg mt-4 max-w-xl mx-auto">
           Interested in working together? Let's talk!
