@@ -18,7 +18,7 @@ export default function Projects() {
     { name: "Restaurant Management System", description: "Java JSwing application for restaurant management.", icon: <FaUtensils className='text-blue-500 text-6xl mx-auto' />, link: "/projects/RMS" },
     { name: "Learning Management System", description: "A complete LMS using HTML, CSS, JS, and PHP.", icon: <FaBook className='text-blue-500 text-6xl mx-auto' />, link: "/projects/learning-management" },
     { name: "Chat Application & Networking in LMS", description: "Real-time chat and networking using PHP and sockets.", icon: <FaComments className='text-blue-500 text-6xl mx-auto' />, link: "/projects/chat-networking" },
-    { name: "File Encryption System", description: "Security-focused file encryption using Python.", icon: <FaLock className='text-blue-500 text-6xl mx-auto' />, link: "/projects/file-encryption" },
+    { name: "File Encryption System", description: "Security-focused file encryption using Python.", icon: <FaLock className='text-blue-500 text-6xl mx-auto' />, link: "/projects/FileEncryption" },
     { name: "Music Player", description: "A Java JSwing-based music player.", icon: <FaMusic className='text-blue-500 text-6xl mx-auto' />, link: "/projects/MusicPlayer" },
     { name: "Digital OBE System", description: "FYP: Digital Outcome-Based Education system in Flutter & Django.", icon: <FaDatabase className='text-blue-500 text-6xl mx-auto' />, link: "/projects/digital-obe" }
   ];
