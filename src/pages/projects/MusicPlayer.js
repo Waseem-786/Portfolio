@@ -1,13 +1,59 @@
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/router';
+import { useState, useEffect } from 'react';
 
 export default function MusicPlayerProject() {
-  return (
-    <div className="dark:bg-gray-900 dark:text-white min-h-screen relative">
-      <Navbar />
+  const router = useRouter();
+  const [darkMode, setDarkMode] = useState(false);
+  
+  // Check Theme from Local Storage
+  useEffect(() => {
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme === "light") {
+      setDarkMode(false);
+      document.documentElement.classList.remove("dark");
+    } else {
+      setDarkMode(true);
+      document.documentElement.classList.add("dark");
+    }
+  }, []);
 
+  // Toggle Theme
+  const toggleDarkMode = () => {
+    const newMode = !darkMode;
+    setDarkMode(newMode);
+    if (newMode) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  };
+
+  return (
+    <div className={darkMode ? "dark bg-gray-900 text-white" : "bg-gray-200 text-gray-900 min-h-screen"}>
+      <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
       <main className="container mx-auto p-8">
+
+        {/* Back Button */}
+        <motion.div 
+          initial={{ opacity: 0, y: -10 }} 
+          animate={{ opacity: 1, y: 0 }} 
+          transition={{ duration: 0.3 }} 
+          className="mb-6 flex"
+        >
+          <button 
+            onClick={() => router.push('/projects')} 
+            className={`flex items-center px-6 py-3 rounded-lg shadow-lg transition-all duration-300 group ${darkMode ? "bg-gray-800 hover:bg-gray-700 text-white" : "bg-blue-500 hover:bg-blue-600 text-white"}`}
+          >
+            <span className="mr-2 transition-all duration-300 transform group-hover:-translate-x-1">←</span>
+            Back to Projects
+          </button>
+        </motion.div>
+        
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -24,7 +70,9 @@ export default function MusicPlayerProject() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.3, duration: 0.5 }}
-          className="space-y-6 bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 p-6 rounded-lg shadow-md"
+          className={`space-y-6 p-6 rounded-lg shadow-md ${
+            darkMode ? "bg-gradient-to-r from-gray-800 to-gray-900" : "bg-gradient-to-r from-gray-100 to-gray-300"
+          }`}
         >
           <h2 className="text-3xl font-bold mb-4 text-blue-400">Problem Statement</h2>
           <p className="text-lg">
@@ -33,9 +81,6 @@ export default function MusicPlayerProject() {
           </p>
 
           <h2 className="text-3xl font-bold mb-4 text-blue-400">Solution</h2>
-          <p className="text-lg">
-            This project is a **Java-based Music Player** that provides:
-          </p>
           <ul className="list-disc list-inside space-y-3 text-lg mt-4">
             <li>Real-time metadata extraction for songs</li>
             <li>Seamless MP3 playback and playlist management</li>
@@ -50,33 +95,35 @@ export default function MusicPlayerProject() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.6, duration: 0.5 }}
-          className="space-y-6 bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md mt-10"
+          className={`space-y-6 p-6 rounded-lg shadow-md mt-10 ${
+            darkMode ? "bg-gray-800" : "bg-gray-100"
+          }`}
         >
           <h2 className="text-3xl font-bold mb-4 text-blue-400">Features</h2>
 
-          <div>
-            <h3 className="text-2xl font-semibold">1. Home Page</h3>
-            <p className="text-lg mt-2">
-              Displays the last five played songs and allows navigation to the music and playlist pages.
-            </p>
-            <img src="/MusicPlayer/HomePage.jpg" alt="Home Page" className="rounded-lg shadow-lg mx-auto" />
-          </div>
-
-          <div>
-            <h3 className="text-2xl font-semibold">2. Music Page</h3>
-            <p className="text-lg mt-2">
-              Search, sort, and play music seamlessly with real-time metadata display.
-            </p>
-            <img src="/MusicPlayer/MusicPage.jpg" alt="Music Page" className="rounded-lg shadow-lg mx-auto" />
-          </div>
-
-          <div>
-            <h3 className="text-2xl font-semibold">3. Playlist Page</h3>
-            <p className="text-lg mt-2">
-              Create, manage, and play songs from different playlists dynamically.
-            </p>
-            <img src="/MusicPlayer/PlaylistPage.jpg" alt="Playlist Page" className="rounded-lg shadow-lg mx-auto" />
-          </div>
+          {[
+            {
+              title: "Home Page",
+              description: "Displays the last five played songs and allows navigation to the music and playlist pages.",
+              image: "/MusicPlayer/HomePage.jpg",
+            },
+            {
+              title: "Music Page",
+              description: "Search, sort, and play music seamlessly with real-time metadata display.",
+              image: "/MusicPlayer/MusicPage.jpg",
+            },
+            {
+              title: "Playlist Page",
+              description: "Create, manage, and play songs from different playlists dynamically.",
+              image: "/MusicPlayer/PlaylistPage.jpg",
+            },
+          ].map((feature, index) => (
+            <div key={index}>
+              <h3 className="text-2xl font-semibold">{feature.title}</h3>
+              <p className="text-lg mt-2">{feature.description}</p>
+              <img src={feature.image} alt={feature.title} className="rounded-lg shadow-lg mx-auto mt-4" />
+            </div>
+          ))}
         </motion.section>
 
         {/* External Libraries */}
@@ -84,7 +131,9 @@ export default function MusicPlayerProject() {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.5 }}
-          className="mt-10 bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 p-6 rounded-lg shadow-md"
+          className={`mt-10 p-6 rounded-lg shadow-md ${
+            darkMode ? "bg-gradient-to-r from-gray-800 to-gray-900" : "bg-gradient-to-r from-gray-100 to-gray-300"
+          }`}
         >
           <h2 className="text-3xl font-bold mb-4 text-blue-400">External Libraries Used</h2>
           <ul className="list-disc list-inside space-y-3 text-lg mt-4">
@@ -99,18 +148,15 @@ export default function MusicPlayerProject() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1, duration: 0.5 }}
-          className="mt-10 bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md"
+          className={`mt-10 p-6 rounded-lg shadow-md ${
+            darkMode ? "bg-gray-800" : "bg-gray-100"
+          }`}
         >
           <h2 className="text-3xl font-bold mb-4 text-blue-400">Project Workflow</h2>
-          <p className="text-lg mt-2">
-            Below are flow diagrams representing different aspects of the music player's workflow and functionalities:
-          </p>
-
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-            <img src="/MusicPlayer/Basic Flow.png" alt="Basic Flow Diagram" className="rounded-lg shadow-lg" />
-            <img src="/MusicPlayer/Home.png" alt="Home Page Flow" className="rounded-lg shadow-lg" />
-            <img src="/MusicPlayer/Music.png" alt="Playlist Page Flow" className="rounded-lg shadow-lg" />
-            <img src="/MusicPlayer/Playlist.png" alt="Music Page Flow" className="rounded-lg shadow-lg" />
+            {["Basic Flow", "Home", "Music", "Playlist"].map((name, index) => (
+              <img key={index} src={`/MusicPlayer/${name}.png`} alt={`${name} Diagram`} className="rounded-lg shadow-lg" />
+            ))}
           </div>
         </motion.section>
 
@@ -119,7 +165,9 @@ export default function MusicPlayerProject() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.2, duration: 0.5 }}
-          className="mt-10 bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md"
+          className={`mt-10 p-6 rounded-lg shadow-md ${
+            darkMode ? "bg-gray-800" : "bg-gray-100"
+          }`}
         >
           <h2 className="text-3xl font-bold mb-4 text-blue-400">Demo Video</h2>
           <video controls className="w-full rounded-lg shadow-lg">
@@ -146,7 +194,7 @@ export default function MusicPlayerProject() {
         </a>
       </motion.div>
 
-      <Footer />
+      <Footer darkMode={darkMode} />
     </div>
   );
 }

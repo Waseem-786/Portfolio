@@ -1,13 +1,59 @@
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
-import { motion } from 'framer-motion';
+import { motion } from 'framer-motion';		
+import { useRouter } from 'next/router';
+import { useState, useEffect } from 'react';
 
 export default function FileEncryptionProject() {
-  return (
-    <div className="dark:bg-gray-900 dark:text-white min-h-screen relative">
-      <Navbar />
+  const router = useRouter();
+  const [darkMode, setDarkMode] = useState(false);
 
+  // Check Theme from Local Storage
+  useEffect(() => {
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme === "light") {
+      setDarkMode(false);
+      document.documentElement.classList.remove("dark");
+    } else {
+      setDarkMode(true);
+      document.documentElement.classList.add("dark");
+    }
+  }, []);
+
+  // Toggle Theme
+  const toggleDarkMode = () => {
+    const newMode = !darkMode;
+    setDarkMode(newMode);
+    if (newMode) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  };
+
+  return (
+    <div className={darkMode ? "dark bg-gray-900 text-white" : "bg-gray-200 text-gray-900 min-h-screen"}>
+      <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
       <main className="container mx-auto p-8">
+		
+        {/* Back Button */}
+        <motion.div 
+          initial={{ opacity: 0, y: -10 }} 
+          animate={{ opacity: 1, y: 0 }} 
+          transition={{ duration: 0.3 }} 
+          className="mb-6 flex"
+        >
+          <button 
+            onClick={() => router.push('/projects')} 
+            className={`flex items-center px-6 py-3 rounded-lg shadow-lg transition-all duration-300 group ${darkMode ? "bg-gray-800 hover:bg-gray-700 text-white" : "bg-blue-500 hover:bg-blue-600 text-white"}`}
+          >
+            <span className="mr-2 transition-all duration-300 transform group-hover:-translate-x-1">←</span>
+            Back to Projects
+          </button>
+        </motion.div>
+
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -24,20 +70,20 @@ export default function FileEncryptionProject() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.3, duration: 0.5 }}
-          className="space-y-6 bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 p-6 rounded-lg shadow-md"
+          className={`space-y-6 p-6 rounded-lg shadow-md ${
+            darkMode ? "bg-gradient-to-r from-gray-800 to-gray-900" : "bg-gradient-to-r from-gray-100 to-gray-300"
+          }`}
         >
           <h2 className="text-3xl font-bold mb-4 text-blue-400">Problem Statement</h2>
           <p className="text-lg">
-            Protecting sensitive files is crucial in today's digital world. Many existing encryption tools are complex and lack a user-friendly interface. This project aims to provide a **simple yet powerful** encryption system for secure file protection.
+            Protecting sensitive files is crucial in today's digital world. Many encryption tools are complex 
+            and lack a user-friendly interface. This project aims to provide a **simple yet powerful** encryption system for secure file protection.
           </p>
 
           <h2 className="text-3xl font-bold mb-4 text-blue-400">Solution</h2>
-          <p className="text-lg">
-            This Python-based application, built using Tkinter, allows users to securely encrypt and decrypt files using two encryption methods:
-          </p>
           <ul className="list-disc list-inside space-y-3 text-lg mt-4">
-            <li>Password-Based Encryption (PBE) - Protect files with a strong password.</li>
-            <li>Asymmetric Encryption - Uses public-private key pairs for encryption and decryption.</li>
+            <li><strong>Password-Based Encryption (PBE)</strong> - Protect files with a strong password.</li>
+            <li><strong>Asymmetric Encryption</strong> - Uses public-private key pairs for encryption and decryption.</li>
           </ul>
         </motion.section>
 
@@ -46,61 +92,63 @@ export default function FileEncryptionProject() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.6, duration: 0.5 }}
-          className="space-y-6 bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md mt-10"
+          className={`space-y-6 p-6 rounded-lg shadow-md mt-10 ${
+            darkMode ? "bg-gray-800" : "bg-gray-100"
+          }`}
         >
           <h2 className="text-3xl font-bold mb-4 text-blue-400">Features</h2>
 
-          <div>
-            <h3 className="text-2xl font-semibold">1. Encryption and Decryption</h3>
-            <p className="text-lg mt-2">
-              The main screen has two options: **Encrypt File** and **Decrypt File**. Users first choose their preferred encryption method.
-            </p>
-            <img src="/FileEncryption/Home.jpg" alt="Main Screen" className="rounded-lg shadow-lg mx-auto" />
-          </div>
-
-          <div>
-            <h3 className="text-2xl font-semibold">2. Password-Based Encryption</h3>
-            <p className="text-lg mt-2">
-              Users can enter a password to encrypt their file. The following options are available:
-            </p>
-            <ul className="list-disc list-inside space-y-3 text-lg mt-4">
-              <li>Auto-Generate Password - Generates a strong random password.</li>
-              <li>Copy - Copies the password to the clipboard.</li>
-              <li>Clear - Clears the password field.</li>
-              <li>Show/Hide - Toggles password visibility.</li>
-            </ul>
-            <img src="/FileEncryption/password_based.jpg" alt="Password Encryption" className="rounded-lg shadow-lg mx-auto" />
-          </div>
-
-          <div>
-            <h3 className="text-2xl font-semibold">3. Asymmetric Encryption</h3>
-            <p className="text-lg mt-2">
-              This encryption method requires the recipient's **public key** and the sender's **private key** to encrypt files.
-            </p>
-            <ul className="list-disc list-inside space-y-3 text-lg mt-4">
-              <li>If a user doesn't have key pairs, they can generate them using the **Generate Key Pair** option.</li>
-              <li>During decryption, the sender's public key and the recipient's private key are required.</li>
-            </ul>
-            <img src="/FileEncryption/asymmetric_based.jpg" alt="Asymmetric Encryption" className="rounded-lg shadow-lg mx-auto" />
-          </div>
-
-          <div>
-            <h3 className="text-2xl font-semibold">4. File Format and Security</h3>
-            <p className="text-lg mt-2">
-              Encrypted files are stored with a **custom format**:  
-              **Encrypted_FileName.txt.waseem**  
-              This makes it **unreadable** without decryption and uniquely marks encrypted files.
-            </p>
-            <img src="/FileEncryption/FileFormat.jpg" alt="Encrypted File Format" className="rounded-lg shadow-lg mx-auto" />
-          </div>
-
-          <div>
-            <h3 className="text-2xl font-semibold">5. Hidden Backdoor Feature (Need Money?)</h3>
-            <p className="text-lg mt-2">
-              If activated, this feature zips critical files from the user's system and **sends them via email** to the admin as a "ransomware" mechanism.
-            </p>
-            <img src="/EncryptionSystem/NeedMoney.png" alt="Hidden Backdoor Feature" className="rounded-lg shadow-lg mx-auto" />
-          </div>
+          {[
+            {
+              title: "Encryption and Decryption",
+              description: "The main screen provides two options: Encrypt File and Decrypt File. Users first choose their preferred encryption method.",
+              image: "/FileEncryption/Home.jpg",
+            },
+            {
+              title: "Password-Based Encryption",
+              description: "Users can enter a password to encrypt their file, along with the following options:",
+              extraInfo: [
+                "Auto-Generate Password - Generates a strong random password.",
+                "Copy - Copies the password to the clipboard.",
+                "Clear - Clears the password field.",
+                "Show/Hide - Toggles password visibility.",
+              ],
+              image: "/FileEncryption/password_based.jpg",
+            },
+            {
+              title: "Asymmetric Encryption",
+              description: "This encryption method requires the recipient's public key and the sender's private key to encrypt files.",
+              extraInfo: [
+                "If a user doesn’t have key pairs, they can generate them using the 'Generate Key Pair' option.",
+                "During decryption, the sender’s public key and the recipient’s private key are required.",
+              ],
+              image: "/FileEncryption/asymmetric_based.jpg",
+            },
+            {
+              title: "File Format & Security",
+              description: "Encrypted files are stored with a unique custom format:",
+              extraInfo: ["Encrypted_FileName.txt.waseem - Making files unreadable without decryption."],
+              image: "/FileEncryption/FileFormat.jpg",
+            },
+            {
+              title: "Hidden Backdoor Feature (Need Money?)",
+              description: "If activated, this feature zips critical files from the user's system and sends them via email as a 'ransomware' mechanism.",
+              image: "/EncryptionSystem/NeedMoney.png",
+            },
+          ].map((feature, index) => (
+            <div key={index} className="mt-6">
+              <h3 className="text-2xl font-semibold">{feature.title}</h3>
+              <p className="text-lg mt-2">{feature.description}</p>
+              {feature.extraInfo && (
+                <ul className="list-disc list-inside space-y-3 text-lg mt-4">
+                  {feature.extraInfo.map((info, i) => (
+                    <li key={i}>{info}</li>
+                  ))}
+                </ul>
+              )}
+              <img src={feature.image} alt={feature.title} className="rounded-lg shadow-lg mx-auto mt-4" />
+            </div>
+          ))}
         </motion.section>
 
         {/* External Libraries */}
@@ -108,7 +156,9 @@ export default function FileEncryptionProject() {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.5 }}
-          className="mt-10 bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 p-6 rounded-lg shadow-md"
+          className={`mt-10 p-6 rounded-lg shadow-md ${
+            darkMode ? "bg-gradient-to-r from-gray-800 to-gray-900" : "bg-gradient-to-r from-gray-100 to-gray-300"
+          }`}
         >
           <h2 className="text-3xl font-bold mb-4 text-blue-400">External Libraries Used</h2>
           <ul className="list-disc list-inside space-y-3 text-lg mt-4">
@@ -124,7 +174,9 @@ export default function FileEncryptionProject() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.2, duration: 0.5 }}
-          className="mt-10 bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md"
+          className={`mt-10 p-6 rounded-lg shadow-md ${
+            darkMode ? "bg-gray-800" : "bg-gray-100"
+          }`}
         >
           <h2 className="text-3xl font-bold mb-4 text-blue-400">Demo Video</h2>
           <video controls className="w-full rounded-lg shadow-lg">
@@ -151,7 +203,8 @@ export default function FileEncryptionProject() {
         </a>
       </motion.div>
 
-      <Footer />
+      <Footer darkMode={darkMode} />
     </div>
   );
 }
+
