@@ -1,4 +1,5 @@
 import { useDarkMode } from "../context/DarkModeContext";
+import MetaHead from '../components/MetaHead';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { motion } from 'framer-motion';
@@ -23,9 +24,10 @@ export default function Certificates() {
 
   return (
     <div className={`${darkMode ? "dark bg-gray-900 text-white" : "bg-gray-100 text-gray-900"}`}>
+      <MetaHead/>
       <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
       <main className="container mx-auto p-8 text-center">
-        <h1 className="text-4xl font-bold mb-6">My Certificates</h1>
+        <h1 className="text-5xl font-extrabold mb-6 text-blue-500">My Certificates</h1>
         <p className="text-lg max-w-2xl mx-auto mb-10">
           Here are some of my professional certifications that showcase my skills.
         </p>

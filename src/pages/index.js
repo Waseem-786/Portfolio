@@ -1,22 +1,18 @@
 import { useDarkMode } from "../context/DarkModeContext";
-import Head from 'next/head';
+import MetaHead from '../components/MetaHead';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { FaLaptopCode, FaCogs, FaDatabase, FaMobileAlt, FaCode, FaChartLine, FaUsers } from 'react-icons/fa';
+import { FaLaptopCode, FaBug, FaCogs, FaPlug, FaNetworkWired, FaCode, FaChartLine, FaUsers } from 'react-icons/fa';
 
 export default function Home() {
   const { darkMode, toggleDarkMode } = useDarkMode();
 
   return (
     <div className={darkMode ? "dark" : ""}>
-      <Head>
-        <title>Waseem Shahzad | Software Engineer</title>
-        <meta name="description" content="Portfolio of Waseem Shahzad, a Software Engineer specializing in web and app development, an expert in Oracle Flexcube, and an Application Consultant." />
-        <link rel="icon" href="/Icon/hex.ico" />
-      </Head>
+      <MetaHead/>
       <Navbar toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
 
       {/* Hero Section */}
@@ -33,7 +29,7 @@ export default function Home() {
             Hi, I'm <span className="text-blue-500">Waseem Shahzad</span>
           </h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 1 }} className="text-xl mt-4 max-w-xl mx-auto">
-            Passionate Software Engineer with expertise in web & app development, Oracle Flexcube, and technical consulting.
+            Debugging by day, engineering solutions by night—turning complex problems into seamless experiences, one line of code at a time.
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6, duration: 1 }}>
             <Link href="/projects">
@@ -54,9 +50,21 @@ export default function Home() {
           <FaLaptopCode className="text-7xl text-blue-400 mx-auto mb-6" />
         </motion.div>
         <h2 className="text-5xl font-extrabold">About Me</h2>
-        <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="text-lg mt-6 max-w-3xl mx-auto leading-relaxed">
-          I am a Software Engineer specializing in web and app development, enterprise solutions, and technical consulting. With expertise in Oracle Flexcube, PL/SQL, Django, and modern web technologies, I thrive on solving complex problems and building efficient, user-centric applications.
+        <motion.p  initial={{ opacity: 0, y: 10 }}  animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="text-lg mt-6 max-w-3xl mx-auto leading-loose text-justify">
+          I'm a passionate software engineer with a knack for solving complex problems and a deep love for backend development. With a strong foundation in web and app development, I specialize in debugging and delivering robust, scalable solutions. Currently, I work as an Application Consultant for Oracle Flexcube, where I provide customization support and resolve critical production issues for leading banks. My expertise lies in turning technical challenges into seamless experiences, ensuring systems run smoothly and efficiently. When I’m not coding, I’m constantly learning and exploring new technologies to stay ahead in the ever-evolving world of software engineering. Let’s build something amazing together!
+          {/* I am a Software Engineer specializing in web and app development, enterprise solutions, and technical consulting. With expertise in Oracle Flexcube, PL/SQL, Django, and modern web technologies, I thrive on solving complex problems and building efficient, user-centric applications. */}
         </motion.p>
+        <Link href="/about">
+          <motion.button
+            initial={{ scale: 0.9 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.3 }}
+            className="mt-6 px-6 py-3 rounded-lg text-lg font-bold transition-all duration-300 shadow-lg 
+              bg-blue-500 text-white hover:bg-blue-600 hover:shadow-blue-500/50 hover:scale-105"
+          >
+            About Me
+          </motion.button>
+        </Link>
       </section>
 
       {/* Expertise Section */}
@@ -64,11 +72,39 @@ export default function Home() {
         <h2 className="text-5xl font-extrabold">My Expertise</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8 max-w-6xl mx-auto text-center">
           {[
-            { title: "Web & App Development", icon: <FaMobileAlt className="text-blue-500 text-6xl mx-auto" />, description: "Building high-performance, scalable applications with modern frameworks." },
-            { title: "Oracle Flexcube Consulting", icon: <FaCogs className="text-blue-500 text-6xl mx-auto" />, description: "Expert in Flexcube core banking solutions, customization, and support." },
-            { title: "Database Optimization", icon: <FaDatabase className="text-blue-500 text-6xl mx-auto" />, description: "Optimizing databases for high availability, security, and performance." },
+            { 
+              title: "Backend Development", 
+              icon: <FaCode className="text-blue-500 text-6xl mx-auto" />, 
+              description: "Designing and building robust, scalable backend systems to power seamless applications." 
+            },
+            { 
+              title: "Oracle Flexcube Consulting", 
+              icon: <FaCogs className="text-blue-500 text-6xl mx-auto" />, 
+              description: "Providing expert customization, debugging, and production support for core banking solutions." 
+            },
+            { 
+              title: "Debugging & Problem Solving", 
+              icon: <FaBug className="text-blue-500 text-6xl mx-auto" />, 
+              description: "Expert in identifying and resolving complex issues to ensure smooth system performance." 
+            },
+            { 
+              title: "APIs Integration", 
+              icon: <FaPlug className="text-blue-500 text-6xl mx-auto" />, 
+              description: "Seamlessly integrating third-party APIs to enhance application functionality and connectivity." 
+            },
+            { 
+              title: "REST API Creation", 
+              icon: <FaNetworkWired className="text-blue-500 text-6xl mx-auto" />, 
+              description: "Building secure and scalable RESTful APIs using Django for modern web and mobile applications." 
+            },
           ].map((expertise, index) => (
-            <motion.div key={index} initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: index * 0.2, duration: 0.5 }} className={`p-8 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105 ${darkMode ? "bg-gray-700" : "bg-white"}`}>
+            <motion.div 
+              key={index} 
+              initial={{ opacity: 0, scale: 0.8 }} 
+              animate={{ opacity: 1, scale: 1 }} 
+              transition={{ delay: index * 0.2, duration: 0.5 }} 
+              className={`p-8 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105 ${darkMode ? "bg-gray-700" : "bg-white"}`}
+            >
               {expertise.icon}
               <h3 className="text-2xl font-semibold mt-4">{expertise.title}</h3>
               <p className="mt-4 text-lg">{expertise.description}</p>
@@ -87,16 +123,16 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8 max-w-6xl mx-auto text-center">
           {[
             {
-              title: "Innovative Web Apps",
+              title: "Innovative Web and Mobile Apps",
               icon: <FaCode className="text-blue-400 text-6xl mx-auto" />,
               description:
                 "Building fast, scalable, and user-friendly web applications using the latest technologies.",
             },
             {
-              title: "Data Analytics",
-              icon: <FaChartLine className="text-blue-400 text-6xl mx-auto" />,
+              title: "RESTful APIs with Django",
+              icon: <FaNetworkWired className="text-blue-400 text-6xl mx-auto" />,
               description:
-                "Analyzing and optimizing business performance with cutting-edge data solutions.",
+                "Creating secure and scalable RESTful APIs to enable seamless communication between systems.",
             },
             {
               title: "Team Collaboration",
@@ -122,6 +158,7 @@ export default function Home() {
         </div>
       </section>
 
+
       {/* Contact Section */}
       <section
         className={`p-12 text-center transition-all duration-500 ${
@@ -130,7 +167,7 @@ export default function Home() {
       >
         <h2 className="text-4xl font-bold">Get in Touch</h2>
         <p className="text-lg mt-4 max-w-xl mx-auto">
-          Interested in working together? Let's talk!
+          Got a project in mind or need help solving a complex problem? Let’s collaborate and turn your ideas into reality!
         </p>
         <Link href="/contact">
           <motion.button

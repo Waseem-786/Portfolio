@@ -1,6 +1,6 @@
 import { useDarkMode } from "../context/DarkModeContext";
 import Link from "next/link";
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 
 export default function Footer() {
   const { darkMode, toggleDarkMode } = useDarkMode();
@@ -57,9 +57,9 @@ export default function Footer() {
           </h3>
           <div className="flex justify-center md:justify-start mt-2 space-x-4">
             {[
-              { icon: <FaGithub size={24} />, link: "https://github.com/" },
-              { icon: <FaLinkedin size={24} />, link: "https://linkedin.com/" },
-              { icon: <FaTwitter size={24} />, link: "https://twitter.com/" },
+              { icon: <FaGithub size={24} />, link: "https://github.com/Waseem-786" },
+              { icon: <FaLinkedin size={24} />, link: "https://www.linkedin.com/in/waseem-shahzad-b4854522a" },
+              { icon: <FaInstagram size={24} />, link: "https://www.instagram.com/waseeemshahzad/" },
             ].map((item, index) => (
               <a
                 key={index}

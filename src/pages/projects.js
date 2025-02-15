@@ -1,4 +1,5 @@
 import { useDarkMode } from "../context/DarkModeContext";
+import MetaHead from '../components/MetaHead';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { motion } from 'framer-motion';
@@ -19,6 +20,7 @@ export default function Projects() {
 
   return (
     <div className={darkMode ? "dark bg-gray-900 text-white" : "bg-gray-100 text-gray-900"}>
+      <MetaHead/>
       <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
       <main className="container mx-auto p-8">
         {/* Page Heading */}
