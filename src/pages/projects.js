@@ -1,37 +1,12 @@
+import { useDarkMode } from "../context/DarkModeContext";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { FaUtensils, FaBook, FaComments, FaLock, FaMusic, FaDatabase } from 'react-icons/fa';
 
 export default function Projects() {
-  const [darkMode, setDarkMode] = useState(false);
-
-  // Check Theme from Local Storage
-  useEffect(() => {
-    const storedTheme = localStorage.getItem("theme");
-    if (storedTheme === "light") {
-      setDarkMode(false);
-      document.documentElement.classList.remove("dark");
-    } else {
-      setDarkMode(true);
-      document.documentElement.classList.add("dark");
-    }
-  }, []);
-
-  // Toggle Theme
-  const toggleDarkMode = () => {
-    const newMode = !darkMode;
-    setDarkMode(newMode);
-    if (newMode) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  };
+  const { darkMode, toggleDarkMode } = useDarkMode();
 
   const projects = [
     { name: "Restaurant Management System", description: "Java JSwing application for restaurant management.", icon: <FaUtensils className='text-blue-500 text-6xl mx-auto' />, link: "/projects/RMS" },

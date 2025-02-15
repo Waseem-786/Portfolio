@@ -1,36 +1,11 @@
+import { useDarkMode } from "../context/DarkModeContext";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { FiMail, FiPhone, FiGithub, FiLinkedin, FiMapPin, FiGlobe, FiBriefcase } from "react-icons/fi";
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
 
 export default function About() {
-  const [darkMode, setDarkMode] = useState(false);
-
-  // Check Theme from Local Storage
-  useEffect(() => {
-    const storedTheme = localStorage.getItem("theme");
-    if (storedTheme === "light") {
-      setDarkMode(false);
-      document.documentElement.classList.remove("dark");
-    } else {
-      setDarkMode(true);
-      document.documentElement.classList.add("dark");
-    }
-  }, []);
-
-  // Toggle Theme
-  const toggleDarkMode = () => {
-    const newMode = !darkMode;
-    setDarkMode(newMode);
-    if (newMode) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  };
+  const { darkMode, toggleDarkMode } = useDarkMode();
 
   return (
     <div className={darkMode ? "dark bg-gray-900 text-white" : "bg-gray-100 text-gray-900"}>
@@ -38,12 +13,7 @@ export default function About() {
 
       <main className="container mx-auto p-8">
         {/* Header Section */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-10"
-        >
+        <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="text-center mb-10">
           <h1 className="text-5xl font-extrabold text-blue-500">Waseem Shahzad</h1>
           <h2 className={`text-2xl font-semibold ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
             Software Engineer | Application Consultant
@@ -51,22 +21,22 @@ export default function About() {
         </motion.div>
 
         {/* Contact Information Section */}
-        <motion.section
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.3, duration: 0.5 }}
+        <motion.section 
+          initial={{ opacity: 0, scale: 0.9 }} 
+          animate={{ opacity: 1, scale: 1 }} 
+          transition={{ delay: 0.3, duration: 0.5 }} 
           className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6 rounded-lg shadow-lg ${
-            darkMode ? "bg-gradient-to-r from-gray-800 to-gray-900" : "bg-gradient-to-r from-blue-100 to-blue-300"
+            darkMode ? "bg-gradient-to-r from-gray-800 to-gray-900" : "bg-gradient-to-r from-gray-200 to-gray-300"
           }`}
         >
           {[
-            { icon: <FiMail />, text: "engrwaseemshahzad134@gmail.com" },
-            { icon: <FiPhone />, text: "+92 3419648099" },
-            { icon: <FiGithub />, text: "Waseem-786" },
+            { icon: <FiMail />, text: "engrwaseemshahzad134@gmail.com", link: "mailto:engrwaseemshahzad134@gmail.com?subject=Portfolio Inquiry"},
+            { icon: <FiPhone />, text: "+92 3419648099" , link: "tel:+923419648099"},
+            { icon: <FiGithub />, text: "Waseem-786", link:"https://github.com/Waseem-786" },
             { icon: <FiBriefcase />, text: "Freelancer @ Studypool", link: "https://www.studypool.com/MalikNajaf?aid=najafsays123" },
             { icon: <FiLinkedin />, text: "LinkedIn Profile", link: "https://www.linkedin.com/in/waseem-shahzad-b4854522a" },
             { icon: <FiMapPin />, text: "Milat Town, Faisalabad" },
-            { icon: <FiGlobe />, text: "usvisahelp.net", link: "https://usvisahelp.net" },
+            { icon: <FiGlobe />, text: "usavisahelp.net", link: "https://usavisahelp.net" },
             { icon: <FiGlobe />, text: "tvonnet.co", link: "https://tvonnet.co" },
           ].map((item, index) => (
             <motion.div
@@ -133,4 +103,3 @@ export default function About() {
     </div>
   );
 }
-

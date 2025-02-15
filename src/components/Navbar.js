@@ -1,16 +1,20 @@
+import { useDarkMode } from "../context/DarkModeContext";
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Sun, Moon } from 'lucide-react';
+import Image from "next/image";
+import {useState} from 'react';
 
-export default function Navbar({ darkMode, toggleDarkMode }) {
+export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false); // For mobile menu
+  const { darkMode, toggleDarkMode } = useDarkMode();
 
   return (
     <nav className={`transition-all duration-300 ${darkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900 shadow-lg"}`}>
       <div className="container mx-auto flex justify-between items-center p-4">
         {/* Logo */}
-        <h1 className={`text-xl font-bold ${darkMode ? "text-white" : "text-gray-900"}`}>My Portfolio</h1>
+        <Image src="/Icon_png/hex.png" alt="Logo" width={50} height={50} className="rounded-full shadow-lg"/>
+        {/* <h1 className={`text-xl font-bold ${darkMode ? "text-white" : "text-gray-900"}`}>My Portfolio</h1> */}
 
         {/* Hamburger Icon */}
         <div className="lg:hidden">

@@ -1,48 +1,24 @@
+import { useDarkMode } from "../context/DarkModeContext";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 
 export default function Certificates() {
   const [selectedCert, setSelectedCert] = useState(null);
-  const [darkMode, setDarkMode] = useState(true);
-
-  // Check Theme from Local Storage
-  useEffect(() => {
-    const storedTheme = localStorage.getItem("theme");
-    if (storedTheme === "light") {
-      setDarkMode(false);
-      document.documentElement.classList.remove("dark");
-    } else {
-      setDarkMode(true);
-      document.documentElement.classList.add("dark");
-    }
-  }, []);
-
-  // Toggle Theme
-  const toggleDarkMode = () => {
-    const newMode = !darkMode;
-    setDarkMode(newMode);
-    if (newMode) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  };
+  const { darkMode, toggleDarkMode } = useDarkMode();
 
   const certificates = [
-    { title: "React Developer", image: "/certificates/Student Nexus.jpg", description: "Certified React Developer by XYZ Institute." },
-    { title: "Next.js Expert", image: "/certificates/Version Control.jpg", description: "Advanced Next.js Certification by ABC Academy." },
-    { title: "JavaScript Mastery", image: "/certificates/Soft Skills by Google.jpg", description: "Professional JavaScript Developer Certification." },
-    { title: "React Developer", image: "/certificates/Python.jpg", description: "Certified React Developer by XYZ Institute." },
-    { title: "Next.js Expert", image: "/certificates/Django.jpg", description: "Advanced Next.js Certification by ABC Academy." },
-    { title: "JavaScript Mastery", image: "/certificates/DRF.jpg", description: "Professional JavaScript Developer Certification." },
-    { title: "JavaScript Mastery", image: "/certificates/Nestle.jpg", description: "Professional JavaScript Developer Certification." },
-    { title: "JavaScript Mastery", image: "/certificates/Pakistan Freelancers Association.jpg", description: "Professional JavaScript Developer Certification." },
-    { title: "JavaScript Mastery", image: "/certificates/problem_solving_basic certificate.jpg", description: "Professional JavaScript Developer Certification." },
+    { title: "Ramadan Contest 2021", image: "/Certificates/Student Nexus.jpg"},
+    { title: "Version Control", image: "/Certificates/Version Control.jpg"},
+    { title: "Google Soft Skills Program", image: "/Certificates/Soft Skills by Google.jpg"},
+    { title: "Python Programming", image: "/Certificates/Python.jpg"},
+    { title: "Django Web Framework", image: "/Certificates/Django.jpg"},
+    { title: "APIs", image: "/Certificates/DRF.jpg"},
+    { title: "Nestle E-Learning 2024 | Sustainbility", image: "/Certificates/Nestle.jpg"},
+    { title: "Pakistan Freelancers Association (PFA)", image: "/Certificates/Pakistan Freelancers Association.jpg"},
+    { title: "Problem Solving", image: "/Certificates/problem_solving_basic certificate.jpg"},
   ];
 
   return (

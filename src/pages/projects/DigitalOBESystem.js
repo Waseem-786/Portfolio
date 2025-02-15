@@ -145,7 +145,7 @@ export default function DigitalOBESystem() {
         className="fixed bottom-5 right-5"
       >
         <a
-          href="https://github.com/Waseem-786/Music_Player"
+          href="https://github.com/Waseem-786/OBE-System-App"
           target="_blank"
           rel="noopener noreferrer"
           className="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-lg rounded-lg shadow-lg transition-all duration-300"
