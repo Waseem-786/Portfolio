@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <div className={darkMode ? "dark" : ""}>
       <MetaHead/>
-      <Navbar toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
+      <Navbar/>
 
       {/* Hero Section */}
       <section
@@ -182,7 +182,7 @@ export default function Home() {
         </Link>
       </section>
 
-      <Footer darkMode={darkMode} />
+      <Footer/>
     </div>
   );
 }

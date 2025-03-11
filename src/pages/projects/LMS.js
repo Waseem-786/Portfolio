@@ -5,11 +5,10 @@ import Footer from '../../components/Footer';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 
-export default function MusicPlayerProject() {
+export default function LMS() {
   const router = useRouter();
   const { darkMode, toggleDarkMode } = useDarkMode();
-  
-  
+
   return (
     <div className={darkMode ? "dark bg-gray-900 text-white" : "bg-gray-200 text-gray-900 min-h-screen"}>
       <MetaHead/>
@@ -31,17 +30,17 @@ export default function MusicPlayerProject() {
             Back to Projects
           </button>
         </motion.div>
-        
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+
+        {/* Introduction Section */}
+        <motion.section 
+          initial={{ opacity: 0, y: -20 }} 
+          animate={{ opacity: 1, y: 0 }} 
+          transition={{ duration: 0.5 }} 
           className="text-center mb-10"
         >
-          <h1 className="text-5xl font-extrabold mb-4">Music Player</h1>
-          <h2 className="text-2xl font-semibold text-blue-500">Project Overview</h2>
-        </motion.div>
+          <h1 className="text-5xl font-extrabold mb-4">Learning Management System (LMS)</h1>
+          <h2 className="text-2xl font-semibold text-blue-500">A Digital Learning Platform</h2>
+        </motion.section>
 
         {/* Problem Statement and Solution */}
         <motion.section
@@ -54,21 +53,19 @@ export default function MusicPlayerProject() {
         >
           <h2 className="text-3xl font-bold mb-4 text-blue-400">Problem Statement</h2>
           <p className="text-lg">
-            Many existing music players lack an efficient way to organize and retrieve playlists dynamically.
-            Users often face cluttered interfaces, metadata retrieval issues, and inefficient database handling.
+            Traditional learning management systems often suffer from a lack of <strong>real-time tracking</strong>, <strong>poor user interfaces</strong>, and <strong>inefficient role management</strong> for admins, students, and faculty.
           </p>
 
           <h2 className="text-3xl font-bold mb-4 text-blue-400">Solution</h2>
           <ul className="list-disc list-inside space-y-3 text-lg mt-4">
-            <li>Real-time metadata extraction for songs</li>
-            <li>Seamless MP3 playback and playlist management</li>
-            <li>Recent song tracking for quick access</li>
-            <li>Java Swing-based smooth UI for better user experience</li>
-            <li>Efficient database handling with MySQL</li>
+            <li>Separate dashboards for <strong>Admins, Faculty, and Students</strong></li>
+            <li>Efficient <strong>course management, student enrollment, and faculty assignments</strong></li>
+            <li>Real-time tracking of <strong>class schedules and assignments</strong></li>
+            <li>Secure and responsive <strong>profile management</strong></li>
           </ul>
         </motion.section>
 
-        {/* Features Section */}
+        {/* Features with Images Inside */}
         <motion.section
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -77,64 +74,45 @@ export default function MusicPlayerProject() {
             darkMode ? "bg-gray-800" : "bg-gray-100"
           }`}
         >
-          <h2 className="text-3xl font-bold mb-4 text-blue-400">Features</h2>
+          <h2 className="text-3xl font-bold mb-4 text-blue-400">Key Features</h2>
 
           {[
-            {
-              title: "Home Page",
-              description: "Displays the last five played songs and allows navigation to the music and playlist pages.",
-              image: "/MusicPlayer/HomePage.jpg",
-            },
-            {
-              title: "Music Page",
-              description: "Search, sort, and play music seamlessly with real-time metadata display.",
-              image: "/MusicPlayer/MusicPage.jpg",
-            },
-            {
-              title: "Playlist Page",
-              description: "Create, manage, and play songs from different playlists dynamically.",
-              image: "/MusicPlayer/PlaylistPage.jpg",
-            },
+            { title: "Home Page", description: "Landing page with navigation to portal and key LMS sections.", image: "/LMS/Home.png" },
+            { title: "Portal Page", description: "User role selection: Admin, Faculty, or Student.", image: "/LMS/Portal.png" },
+            { title: "Admin Dashboard", description: "Manage accounts, courses, and student enrollments.", image: "/LMS/Admin_Dashboard.png" },
+            { title: "Faculty Dashboard", description: "Manage assigned classes and track student progress.", image: "/LMS/Faculty_Dashboard.png" },
+            { title: "Student Dashboard", description: "View enrolled courses and class schedules.", image: "/LMS/Student_Dashboard.png" },
+            { title: "Course Management", description: "Admins can create, edit, and assign courses.", image: "/LMS/Course_Management.png" },
           ].map((feature, index) => (
-            <div key={index}>
+            <div key={index} className="">
               <h3 className="text-2xl font-semibold">{feature.title}</h3>
               <p className="text-lg mt-2">{feature.description}</p>
-              <img src={feature.image} alt={feature.title} className="rounded-lg shadow-lg mx-auto mt-4" />
+              <img src={feature.image} alt={feature.title} className="rounded-lg shadow-lg mx-auto mt-4 max-w-5xl" />
             </div>
           ))}
         </motion.section>
 
-        {/* External Libraries */}
-        <motion.section
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 0.5 }}
-          className={`mt-10 p-6 rounded-lg shadow-md ${
-            darkMode ? "bg-gradient-to-r from-gray-800 to-gray-900" : "bg-gradient-to-r from-gray-100 to-gray-300"
-          }`}
-        >
-          <h2 className="text-3xl font-bold mb-4 text-blue-400">External Libraries Used</h2>
-          <ul className="list-disc list-inside space-y-3 text-lg mt-4">
-            <li>jaudiotagger-2.2.6-SNAPSHOT - Metadata Extraction</li>
-            <li>jl1.0.1 - MP3 Playback Support</li>
-            <li>mysql-connector-j-8.0.31 - MySQL Database Communication</li>
-          </ul>
-        </motion.section>
-
-        {/* Flow Diagrams */}
+        {/* ERD Section */}
         <motion.section
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 0.5 }}
+          transition={{ delay: 1.1, duration: 0.5 }}
           className={`mt-10 p-6 rounded-lg shadow-md ${
             darkMode ? "bg-gray-800" : "bg-gray-100"
           }`}
         >
-          <h2 className="text-3xl font-bold mb-4 text-blue-400">Project Workflow</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-            {["Basic Flow", "Home", "Music", "Playlist"].map((name, index) => (
-              <img key={index} src={`/MusicPlayer/${name}.png`} alt={`${name} Diagram`} className="rounded-lg shadow-lg" />
-            ))}
+          <h2 className="text-3xl font-bold mb-4 text-blue-400 text-center">
+            Entity-Relationship Diagram (ERD)
+          </h2>
+          <p className="text-lg text-center">
+            The following ERD represents the database schema of our Learning Management System.
+          </p>
+          <div className="flex justify-center mt-6">
+            <img 
+              src="/LMS/ERD.png"
+              alt="ERD Diagram of LMS" 
+              className="rounded-lg shadow-lg"
+            />
           </div>
         </motion.section>
 
@@ -149,7 +127,7 @@ export default function MusicPlayerProject() {
         >
           <h2 className="text-3xl font-bold mb-4 text-blue-400">Demo Video</h2>
           <video controls className="w-full rounded-lg shadow-lg">
-            <source src="/MusicPlayer/MusicPlayerVideo.mp4" type="video/mp4" />
+            <source src="/LMS/LMSVideo.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </motion.section>
@@ -163,7 +141,7 @@ export default function MusicPlayerProject() {
         className="fixed bottom-5 right-5"
       >
         <a
-          href="https://github.com/Waseem-786/Music_Player"
+          href="https://github.com/Waseem-786/DB_Project"
           target="_blank"
           rel="noopener noreferrer"
           className="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold text-lg rounded-lg shadow-lg transition-all duration-300"

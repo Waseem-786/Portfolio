@@ -25,7 +25,7 @@ export default function Certificates() {
   return (
     <div className={`${darkMode ? "dark bg-gray-900 text-white" : "bg-gray-100 text-gray-900"}`}>
       <MetaHead/>
-      <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      <Navbar/>
       <main className="container mx-auto p-8 text-center">
         <h1 className="text-5xl font-extrabold mb-6 text-blue-500">My Certificates</h1>
         <p className="text-lg max-w-2xl mx-auto mb-10">
@@ -56,7 +56,7 @@ export default function Certificates() {
           ))}
         </div>
       </main>
-      <Footer darkMode={darkMode} />
+      <Footer/>
 
       {/* Modal for Viewing Certificate */}
       {selectedCert && (

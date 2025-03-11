@@ -45,7 +45,7 @@ export default function Contact() {
   return (
     <div className={`${darkMode ? "dark bg-gray-900 text-white" : "bg-gray-100 text-gray-900"} min-h-screen`}>
       <MetaHead/>
-      <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      <Navbar/>
       <main className="container mx-auto p-8">
         {/* Heading */}
         <motion.h1
@@ -157,7 +157,7 @@ export default function Contact() {
           </motion.button>
         </motion.form>
       </main>
-      <Footer darkMode={darkMode} />
+      <Footer/>
     </div>
   );
 }

@@ -11,7 +11,7 @@ export default function Projects() {
 
   const projects = [
     { name: "Restaurant Management System", description: "Java JSwing application for restaurant management.", icon: <FaUtensils className='text-blue-500 text-6xl mx-auto' />, link: "/projects/RMS" },
-    { name: "Learning Management System", description: "A complete LMS using HTML, CSS, JS, and PHP.", icon: <FaBook className='text-blue-500 text-6xl mx-auto' />, link: "/projects/learning-management" },
+    { name: "Learning Management System", description: "A complete LMS using HTML, CSS, JS, and PHP.", icon: <FaBook className='text-blue-500 text-6xl mx-auto' />, link: "/projects/LMS" },
     { name: "Chat Application & Networking in LMS", description: "Real-time chat and networking using PHP and sockets.", icon: <FaComments className='text-blue-500 text-6xl mx-auto' />, link: "/projects/chat-networking" },
     { name: "File Encryption System", description: "Security-focused file encryption using Python.", icon: <FaLock className='text-blue-500 text-6xl mx-auto' />, link: "/projects/FileEncryption" },
     { name: "Music Player", description: "A Java JSwing-based music player.", icon: <FaMusic className='text-blue-500 text-6xl mx-auto' />, link: "/projects/MusicPlayer" },
@@ -21,7 +21,7 @@ export default function Projects() {
   return (
     <div className={darkMode ? "dark bg-gray-900 text-white" : "bg-gray-100 text-gray-900"}>
       <MetaHead/>
-      <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      <Navbar/>
       <main className="container mx-auto p-8">
         {/* Page Heading */}
         <motion.h1
@@ -65,7 +65,7 @@ export default function Projects() {
           ))}
         </div>
       </main>
-      <Footer darkMode={darkMode} />
+      <Footer/>
     </div>
   );
 }

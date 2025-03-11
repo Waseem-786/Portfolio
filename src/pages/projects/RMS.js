@@ -1,41 +1,18 @@
+import { useDarkMode } from "../../context/DarkModeContext";
+import MetaHead from '../../components/MetaHead';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
-import { useState, useEffect } from 'react';
 
 export default function RestaurantManagementSystem() {
   const router = useRouter();
-  const [darkMode, setDarkMode] = useState(false);
-
-  // Check Theme from Local Storage
-  useEffect(() => {
-    const storedTheme = localStorage.getItem("theme");
-    if (storedTheme === "light") {
-      setDarkMode(false);
-      document.documentElement.classList.remove("dark");
-    } else {
-      setDarkMode(true);
-      document.documentElement.classList.add("dark");
-    }
-  }, []);
-
-  // Toggle Theme
-  const toggleDarkMode = () => {
-    const newMode = !darkMode;
-    setDarkMode(newMode);
-    if (newMode) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  };
+  const { darkMode, toggleDarkMode } = useDarkMode();
 
   return (
     <div className={darkMode ? "dark bg-gray-900 text-white" : "bg-gray-200 text-gray-900 min-h-screen"}>
-      <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      <MetaHead/>
+      <Navbar/>
       <main className="container mx-auto p-8">
 
         {/* Back Button */}
@@ -179,7 +156,7 @@ export default function RestaurantManagementSystem() {
         </a>
       </motion.div>
 
-      <Footer darkMode={darkMode} />
+      <Footer/>
     </div>
   );
 }

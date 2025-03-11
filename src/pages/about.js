@@ -12,7 +12,7 @@ export default function About() {
   return (
     <div className={darkMode ? "dark bg-gray-900 text-white" : "bg-gray-100 text-gray-900"}>
       <MetaHead/>
-      <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      <Navbar/>
 
       <main className="container mx-auto p-8">
         {/* Header Section */}
@@ -223,7 +223,7 @@ export default function About() {
 
 
       </main>
-      <Footer darkMode={darkMode} />
+      <Footer/>
     </div>
   );
 }
