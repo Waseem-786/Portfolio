@@ -87,7 +87,13 @@ export default function LMS() {
             <div key={index} className="">
               <h3 className="text-2xl font-semibold">{feature.title}</h3>
               <p className="text-lg mt-2">{feature.description}</p>
-              <img src={feature.image} alt={feature.title} className="rounded-lg shadow-lg mx-auto mt-4 max-w-5xl" />
+              <div className="flex justify-center">
+                <img 
+                  src={feature.image} 
+                  alt={feature.title} 
+                  className="rounded-lg shadow-lg w-full max-w-5xl h-auto object-cover"
+                />
+            </div>
             </div>
           ))}
         </motion.section>
