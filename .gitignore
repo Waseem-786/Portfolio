@@ -22,6 +22,7 @@
 
 # misc
 .DS_Store
+Thumbs.db
 *.pem
 
 # debug
@@ -32,6 +33,7 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
 
 # vercel
 .vercel
@@ -39,3 +41,18 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# editors / IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Claude Code / agent runtime
+.claude/settings.local.json
+.playwright-mcp/
+
+# local design audit screenshots (not shipped)
+audit-*.png
+v[0-9]*-*.png
+final-*.png

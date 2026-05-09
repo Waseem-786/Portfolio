@@ -1,75 +1,168 @@
 import { useDarkMode } from "../context/DarkModeContext";
-import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { Sun, Moon } from 'lucide-react';
-import Image from "next/image";
-import {useState} from 'react';
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { motion, AnimatePresence } from "framer-motion";
+import { Sun, Moon, Menu, X } from "lucide-react";
+import { useEffect, useState } from "react";
+
+const NAV = [
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Projects", href: "/projects" },
+  { label: "Certificates", href: "/certificates" },
+  { label: "Contact", href: "/contact" },
+];
 
 export default function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // For mobile menu
+  const router = useRouter();
   const { darkMode, toggleDarkMode } = useDarkMode();
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const isActive = (href) =>
+    href === "/" ? router.pathname === "/" : router.pathname.startsWith(href);
 
   return (
-    <nav className={`transition-all duration-300 ${darkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900 shadow-lg"}`}>
-      <div className="container mx-auto flex justify-between items-center p-4">
-        {/* Logo */}
-        <Image src="/Icon_png/hex.png" alt="Logo" width={50} height={50} className="rounded-full shadow-lg"/>
-        {/* <h1 className={`text-xl font-bold ${darkMode ? "text-white" : "text-gray-900"}`}>My Portfolio</h1> */}
+    <header
+      className={`sticky top-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? darkMode
+            ? "bg-gray-950/75 backdrop-blur-xl border-b border-white/5"
+            : "bg-white/75 backdrop-blur-xl border-b border-gray-200/60"
+          : "bg-transparent border-b border-transparent"
+      }`}
+    >
+      <nav className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2.5 group">
+            <span className="relative flex h-9 w-9 items-center justify-center rounded-lg bg-brand-gradient text-white font-bold text-sm shadow-glow">
+              WS
+            </span>
+            <span className={`hidden sm:block font-semibold tracking-tight ${darkMode ? "text-white" : "text-gray-900"}`}>
+              Waseem<span className="gradient-text">.dev</span>
+            </span>
+          </Link>
 
-        {/* Hamburger Icon */}
-        <div className="lg:hidden">
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={`p-2 rounded-full transition-all ${darkMode ? "bg-gray-700 hover:bg-gray-600" : "bg-gray-300 hover:bg-gray-400"}`}
-          >
-            <span className="sr-only">Open Menu</span>
-            {isMenuOpen ? (
-              <motion.svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-              </motion.svg>
-            ) : (
-              <motion.svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-6 w-6">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-              </motion.svg>
-            )}
-          </button>
-        </div>
-
-        {/* Desktop Menu */}
-        <ul className="hidden lg:flex space-x-6">
-          <li><Link href="/">Home</Link></li>
-          <li><Link href="/about">About</Link></li>
-          <li><Link href="/projects">Projects</Link></li>
-          <li><Link href="/contact">Contact</Link></li>
-          <li><Link href="/certificates">Certificates</Link></li>
-        </ul>
-
-        {/* Dark Mode Toggle */}
-        <button
-          onClick={toggleDarkMode}
-          className={`ml-4 p-2 rounded-full transition-all ${darkMode ? "bg-gray-700 hover:bg-gray-600" : "bg-gray-300 hover:bg-gray-400"}`}
-        >
-          {darkMode ? <Sun className="text-yellow-400" size={20} /> : <Moon className="text-gray-900" size={20} />}
-        </button>
-      </div>
-
-      {/* Mobile Menu */}
-      {isMenuOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
-          className={`lg:hidden p-4 transition-all ${darkMode ? "bg-gray-800 text-white" : "bg-gray-100 text-gray-900"}`}
-        >
-          <ul className="flex flex-col items-center space-y-4">
-            <li><Link href="/" onClick={() => setIsMenuOpen(false)}>Home</Link></li>
-            <li><Link href="/about" onClick={() => setIsMenuOpen(false)}>About</Link></li>
-            <li><Link href="/projects" onClick={() => setIsMenuOpen(false)}>Projects</Link></li>
-            <li><Link href="/contact" onClick={() => setIsMenuOpen(false)}>Contact</Link></li>
-            <li><Link href="/certificates" onClick={() => setIsMenuOpen(false)}>Certificates</Link></li>
+          {/* Desktop nav */}
+          <ul className="hidden lg:flex items-center gap-1">
+            {NAV.map((item) => {
+              const active = isActive(item.href);
+              return (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className={`relative px-4 py-2 text-sm font-medium rounded-md transition-colors ${
+                      active
+                        ? darkMode
+                          ? "text-white"
+                          : "text-gray-900"
+                        : darkMode
+                        ? "text-gray-400 hover:text-white"
+                        : "text-gray-600 hover:text-gray-900"
+                    }`}
+                  >
+                    {item.label}
+                    {active && (
+                      <motion.span
+                        layoutId="nav-underline"
+                        className="absolute left-3 right-3 -bottom-0.5 h-0.5 rounded-full bg-brand-gradient"
+                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      />
+                    )}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
-        </motion.div>
-      )}
-    </nav>
+
+          {/* Right cluster */}
+          <div className="flex items-center gap-2">
+            <button
+              onClick={toggleDarkMode}
+              aria-label="Toggle dark mode"
+              className={`relative p-2 rounded-full transition-colors ${
+                darkMode
+                  ? "bg-white/5 hover:bg-white/10 text-yellow-300"
+                  : "bg-gray-100 hover:bg-gray-200 text-gray-700"
+              }`}
+            >
+              {darkMode ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
+
+            <Link
+              href="/contact"
+              className="hidden lg:inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold text-white bg-brand-gradient hover:opacity-90 shadow-glow transition-opacity"
+            >
+              Hire Me
+            </Link>
+
+            <button
+              onClick={() => setOpen((v) => !v)}
+              aria-label="Toggle menu"
+              className={`lg:hidden p-2 rounded-md transition-colors ${
+                darkMode ? "text-white hover:bg-white/10" : "text-gray-900 hover:bg-gray-100"
+              }`}
+            >
+              {open ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Mobile menu */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2 }}
+            className={`lg:hidden overflow-hidden border-t ${
+              darkMode ? "border-white/5 bg-gray-950/95" : "border-gray-200/60 bg-white/95"
+            } backdrop-blur-xl`}
+          >
+            <ul className="px-6 py-4 space-y-1">
+              {NAV.map((item) => {
+                const active = isActive(item.href);
+                return (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      onClick={() => setOpen(false)}
+                      className={`block px-3 py-2.5 rounded-md text-sm font-medium transition-colors ${
+                        active
+                          ? "text-white bg-brand-gradient"
+                          : darkMode
+                          ? "text-gray-300 hover:bg-white/5"
+                          : "text-gray-700 hover:bg-gray-100"
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                );
+              })}
+              <li className="pt-2">
+                <Link
+                  href="/contact"
+                  onClick={() => setOpen(false)}
+                  className="block text-center px-4 py-2.5 rounded-full text-sm font-semibold text-white bg-brand-gradient"
+                >
+                  Hire Me
+                </Link>
+              </li>
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
   );
 }
