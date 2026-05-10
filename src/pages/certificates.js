@@ -8,15 +8,16 @@ import { useEffect, useState } from "react";
 import { FiX, FiZoomIn, FiAward } from "react-icons/fi";
 
 const CERTS = [
-  { title: "Ramadan Contest 2021", issuer: "Student Nexus", image: "/Certificates/Student Nexus.jpg" },
-  { title: "Version Control with Git", issuer: "Coursera", image: "/Certificates/Version Control.jpg" },
-  { title: "Soft Skills Program", issuer: "Google", image: "/Certificates/Soft Skills by Google.jpg" },
-  { title: "Python Programming", issuer: "Coursera", image: "/Certificates/Python.jpg" },
-  { title: "Django Web Framework", issuer: "Meta", image: "/Certificates/Django.jpg" },
+  { title: "The Complete PL/SQL Bootcamp: Beginner to Advanced", issuer: "Udemy · Database Masters Training (May 2025, 26.5 hrs)", image: "/Certificates/PL_SQL.jpg" },
   { title: "APIs with Django REST Framework", issuer: "Meta", image: "/Certificates/DRF.jpg" },
+  { title: "Django Web Framework", issuer: "Meta", image: "/Certificates/Django.jpg" },
+  { title: "Python Programming", issuer: "Coursera", image: "/Certificates/Python.jpg" },
+  { title: "Version Control with Git", issuer: "Coursera", image: "/Certificates/Version Control.jpg" },
+  { title: "Problem Solving (Basic)", issuer: "HackerRank", image: "/Certificates/problem_solving_basic certificate.jpg" },
+  { title: "Soft Skills Program", issuer: "Google", image: "/Certificates/Soft Skills by Google.jpg" },
   { title: "Sustainability E-Learning 2024", issuer: "Nestlé", image: "/Certificates/Nestle.jpg" },
   { title: "Pakistan Freelancers Association", issuer: "PFA", image: "/Certificates/Pakistan Freelancers Association.jpg" },
-  { title: "Problem Solving (Basic)", issuer: "HackerRank", image: "/Certificates/problem_solving_basic certificate.jpg" },
+  { title: "Ramadan Contest 2021", issuer: "Student Nexus", image: "/Certificates/Student Nexus.jpg" },
 ];
 
 export default function Certificates() {
@@ -77,28 +78,40 @@ export default function Certificates() {
             {CERTS.map((cert, i) => (
               <motion.button
                 key={cert.title}
-                onClick={() => setActive(cert)}
+                onClick={() => !cert.placeholder && setActive(cert)}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 + (i % 3) * 0.08 }}
                 className={`group relative text-left overflow-hidden rounded-2xl gradient-border transition-all hover:-translate-y-1 ${
-                  darkMode ? "bg-gray-900" : "bg-white"
-                }`}
+                  cert.placeholder ? "cursor-default" : ""
+                } ${darkMode ? "bg-gray-900" : "bg-white"}`}
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
-                  <Image
-                    src={cert.image}
-                    alt={cert.title}
-                    fill
-                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
+                  {cert.placeholder ? (
+                    <div className={`absolute inset-0 bg-gradient-to-br ${cert.accent || "from-blue-500 to-indigo-600"} flex items-center justify-center`}>
+                      <div
+                        className="absolute inset-0 opacity-25"
+                        style={{ backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.5) 1px, transparent 0)", backgroundSize: "24px 24px" }}
+                      />
+                      <FiAward className="relative text-white text-6xl drop-shadow-2xl" />
+                    </div>
+                  ) : (
+                    <Image
+                      src={cert.image}
+                      alt={cert.title}
+                      fill
+                      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <span className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/95 text-gray-900 text-sm font-semibold shadow-xl">
-                      <FiZoomIn /> View
-                    </span>
-                  </div>
+                  {!cert.placeholder && (
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <span className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/95 text-gray-900 text-sm font-semibold shadow-xl">
+                        <FiZoomIn /> View
+                      </span>
+                    </div>
+                  )}
                 </div>
                 <div className="p-5">
                   <div className="flex items-start gap-3">

@@ -20,35 +20,98 @@ import {
   FaUsers,
   FaCogs,
   FaServer,
-  FaDatabase,
   FaTools,
-  FaCode,
+  FaRobot,
+  FaLanguage,
 } from "react-icons/fa";
 
 const CONTACT = [
   { icon: <FiMail />, text: "engrwaseemshahzad134@gmail.com", link: "mailto:engrwaseemshahzad134@gmail.com" },
   { icon: <FiPhone />, text: "+92 341 9648099", link: "tel:+923419648099" },
   { icon: <FiGithub />, text: "github.com/Waseem-786", link: "https://github.com/Waseem-786" },
-  { icon: <FiLinkedin />, text: "LinkedIn Profile", link: "https://www.linkedin.com/in/waseem-shahzad-b4854522a" },
+  { icon: <FiLinkedin />, text: "linkedin.com/in/WaseemShahzad", link: "https://www.linkedin.com/in/WaseemShahzad" },
   { icon: <FiBriefcase />, text: "Freelancer @ Studypool", link: "https://www.studypool.com/MalikNajaf?aid=najafsays123" },
   { icon: <FiGlobe />, text: "usavisahelp.net", link: "https://usavisahelp.net" },
-  { icon: <FiMapPin />, text: "Milat Town, Faisalabad" },
+  { icon: <FiMapPin />, text: "Islamabad, Pakistan" },
 ];
 
 const SKILLS = [
-  { title: "Frontend", icon: <FaCode />, skills: ["JavaScript", "React", "Next.js", "Flutter", "Tailwind CSS", "Bootstrap"] },
-  { title: "Backend", icon: <FaServer />, skills: ["Python", "Django", "Django REST", "PHP", "Node.js"] },
-  { title: "Databases", icon: <FaDatabase />, skills: ["MongoDB", "MySQL", "MSSQL", "Oracle", "PL/SQL"] },
-  { title: "DevOps & Tools", icon: <FaTools />, skills: ["Docker", "Git", "Firebase", "Linux"] },
-  { title: "Banking", icon: <FaCogs />, skills: ["Oracle Flexcube", "PL/SQL Optimization", "Production Support"] },
-  { title: "Soft Skills", icon: <FaUsers />, skills: ["Debugging", "Communication", "Leadership", "Mentoring"] },
+  {
+    title: "Core Banking & Oracle",
+    icon: <FaCogs />,
+    skills: [
+      "Oracle FLEXCUBE",
+      "CASA · Lending · ELCM · PDM",
+      "Oracle Database 19c / 12c",
+      "PL/SQL",
+      "SQL Tuning & Optimization",
+      "EXPLAIN PLAN / DBMS_XPLAN",
+      "Islamic Banking",
+      "End-of-Day (EOD) processes",
+      "Oracle RAD Tool",
+      "Oracle APEX",
+    ],
+  },
+  {
+    title: "Software Engineering",
+    icon: <FaServer />,
+    skills: [
+      "Python",
+      "Django",
+      "Django REST",
+      "Node.js",
+      "TypeScript",
+      "Next.js",
+      "React",
+      "Flutter",
+      "Electron",
+      "REST APIs",
+      "MongoDB",
+      "Git",
+      "Docker",
+    ],
+  },
+  {
+    title: "AI / LLM Integration",
+    icon: <FaRobot />,
+    skills: [
+      "Google Gemini API",
+      "Anthropic Claude API",
+      "Prompt engineering",
+      "Structured outputs",
+      "Schema-grounded LLM workflows",
+    ],
+  },
+  {
+    title: "Practices",
+    icon: <FaUsers />,
+    skills: [
+      "Agile delivery",
+      "Code review",
+      "Mentoring",
+      "Client communication",
+      "Technical documentation",
+      "Production support",
+      "On-site implementation",
+    ],
+  },
+  {
+    title: "Languages",
+    icon: <FaLanguage />,
+    skills: ["English — IELTS 7.0", "Urdu — Native"],
+  },
+  {
+    title: "Tools",
+    icon: <FaTools />,
+    skills: ["Monaco Editor", "Electron Builder", "Tailwind CSS", "Firebase", "Linux"],
+  },
 ];
 
 const EDUCATION = [
   {
     degree: "Bachelor's in Software Engineering",
-    institution: "NUST University",
-    detail: "CGPA 3.62 / 4.0",
+    institution: "National University of Sciences and Technology (NUST)",
+    detail: "CGPA 3.62 / 4.00 · Final Year Project: Digital OBE System",
     period: "2020 — 2024",
   },
   {
@@ -65,27 +128,40 @@ const EDUCATION = [
   },
 ];
 
+const CERTIFICATIONS = [
+  {
+    title: "The Complete PL/SQL Bootcamp: Beginner to Advanced",
+    issuer: "Udemy · Database Masters Training / Code Star Academy",
+    detail: "26.5 hours",
+    period: "May 2025",
+  },
+];
+
 const EXPERIENCE = [
   {
     company: "Techlogix",
-    role: "Application Consultant",
+    role: "Technical Application Consultant",
     period: "Jul 2024 — Present",
-    description:
-      "Supporting leading banks across Oracle Flexcube — resolving production issues, writing optimized PL/SQL, debugging integration flows, and shipping performance improvements.",
+    location: "Islamabad, Pakistan",
+    bullets: [
+      "Deliver Oracle FLEXCUBE production and staging support across CASA, Lending, ELCM, and PDM modules for tier-1 banking clients — owning issue analysis, PL/SQL fixes, and post-deployment validation.",
+      "On-site technical lead for Pakistan's first conventional-to-Islamic banking conversion using Oracle FLEXCUBE; personally migrated 122 branches and authored migration scripts the client now uses to roll out remaining branches independently.",
+      "Delivered 50+ FLEXCUBE customizations end-to-end — requirement analysis, PL/SQL implementation, UAT, production deployment, and warranty support.",
+      "Own configuration and ongoing production support for the PDM (Profit Distribution Module) for Islamic banking operations, including profit calculation rules and EOD reconciliation.",
+      "Optimized recurring End-of-Day batches and resolved month-end issues using PL/SQL tuning techniques (EXPLAIN PLAN, indexing strategy, bulk binds).",
+      "Mentored 5 junior engineers on FLEXCUBE customization workflows, PL/SQL best practices, and on-site delivery; serve as liaison between client stakeholders, offshore developers, and QA.",
+    ],
   },
   {
     company: "eARMS GHQ — C4I Directorate",
-    role: "Oracle APEX Development Intern",
+    role: "Oracle APEX Developer Intern",
     period: "Jul 2023 — Sep 2023",
-    description:
-      "Developed an ML-powered chatbot, implemented an advanced attendance system, and optimized internal database processes for a defence-grade environment.",
-  },
-  {
-    company: "At Law Call Center",
-    role: "Customer Support Representative",
-    period: "2021 (2 months)",
-    description:
-      "Worked in a professional call-center environment handling client queries — sharpened communication and problem-solving under pressure.",
+    location: "Islamabad, Pakistan",
+    bullets: [
+      "Built a ChatBot in Oracle APEX integrated with a machine-learning model trained on Excel data, enabling natural-language queries against operational records.",
+      "Developed an Attendance Management System to automate record handling and reporting, replacing manual tracking workflows.",
+      "Strengthened SQL, PL/SQL, and APEX skills through hands-on production-style project work in a defence-grade environment.",
+    ],
   },
 ];
 
@@ -94,7 +170,7 @@ export default function About() {
 
   return (
     <div className={darkMode ? "bg-gray-950 text-gray-200" : "bg-white text-gray-800"}>
-      <MetaHead title="About — Waseem Shahzad" description="About Waseem Shahzad — software engineer, Oracle Flexcube consultant, and full-stack developer." />
+      <MetaHead title="About — Waseem Shahzad" description="About Waseem Shahzad — Oracle FLEXCUBE Technical Consultant and full-stack engineer." />
       <Navbar />
 
       {/* HERO */}
@@ -117,15 +193,17 @@ export default function About() {
                 <span className="gradient-text">Waseem Shahzad</span>
               </h1>
               <p className={`mt-3 text-xl lg:text-2xl font-semibold ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
-                Software Engineer · Application Consultant
+                Oracle FLEXCUBE Technical Consultant
               </p>
               <p className={`mt-5 max-w-2xl text-base lg:text-lg leading-relaxed ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
-                I specialize in backend systems, REST APIs, and Oracle Flexcube consulting. My day-to-day spans debugging complex banking flows, writing optimized PL/SQL, and shipping full-stack web and mobile products. I value clean architecture, thoughtful API design, and production-grade reliability.
+                Oracle FLEXCUBE Technical Consultant at Techlogix, delivering Core Banking solutions to tier-1 banks across CASA, Lending, ELCM, and PDM modules — including key technical contributions to Pakistan's first conventional-to-Islamic banking conversion (122 branches migrated on-site).
+              </p>
+              <p className={`mt-3 max-w-2xl text-base lg:text-lg leading-relaxed ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+                Strong PL/SQL and SQL-tuning expertise complemented by full-stack engineering in Python/Django, Node.js, Next.js, and React. Built in-house automation tools that cut deployment review effort by ~30 minutes per change. Open to remote consulting and contract opportunities with European banks and fintechs.
               </p>
 
-              {/* CV download */}
               <a
-                href="/Waseem_Shahzad-removebg.png"
+                href="/Waseem_Shahzad_CV.pdf"
                 download
                 className="mt-7 inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-white bg-brand-gradient hover:opacity-90 shadow-glow transition-opacity"
               >
@@ -250,7 +328,6 @@ export default function About() {
           </div>
 
           <div className="relative pl-6 sm:pl-10">
-            {/* Timeline rail */}
             <div className={`absolute left-2 sm:left-3 top-0 bottom-0 w-px ${darkMode ? "bg-white/10" : "bg-gray-200"}`} />
             {EXPERIENCE.map((exp, i) => (
               <motion.div
@@ -263,19 +340,23 @@ export default function About() {
                 <span className="absolute -left-[25px] sm:-left-[33px] top-1.5 flex items-center justify-center w-5 h-5 rounded-full bg-brand-gradient ring-4 ring-white dark:ring-gray-950 shadow-glow">
                   <FiBriefcase className="text-white text-[10px]" />
                 </span>
-                <div
-                  className={`p-6 rounded-2xl gradient-border ${
-                    darkMode ? "bg-gray-900" : "bg-white"
-                  }`}
-                >
+                <div className={`p-6 rounded-2xl gradient-border ${darkMode ? "bg-gray-900" : "bg-white"}`}>
                   <div className="flex flex-wrap items-baseline justify-between gap-2">
                     <h3 className="text-lg font-bold">{exp.role}</h3>
                     <span className={`text-xs font-mono ${darkMode ? "text-gray-500" : "text-gray-500"}`}>{exp.period}</span>
                   </div>
-                  <p className={`text-sm font-semibold ${darkMode ? "text-blue-400" : "text-blue-600"}`}>{exp.company}</p>
-                  <p className={`mt-3 text-sm leading-relaxed ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
-                    {exp.description}
+                  <p className={`text-sm font-semibold ${darkMode ? "text-blue-400" : "text-blue-600"}`}>
+                    {exp.company}
+                    {exp.location && <span className={`ml-2 font-normal ${darkMode ? "text-gray-500" : "text-gray-500"}`}>· {exp.location}</span>}
                   </p>
+                  <ul className={`mt-4 space-y-2.5 text-sm leading-relaxed ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+                    {exp.bullets.map((b, k) => (
+                      <li key={k} className="flex items-start gap-2.5">
+                        <span className={`mt-1.5 shrink-0 h-1.5 w-1.5 rounded-full ${darkMode ? "bg-blue-400" : "bg-blue-600"}`} />
+                        <span>{b}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </motion.div>
             ))}
@@ -283,7 +364,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* EDUCATION */}
+      {/* EDUCATION & CERTIFICATIONS */}
       <section className={`${darkMode ? "bg-gray-950 border-t border-white/5" : "bg-gray-50 border-t border-gray-200"}`}>
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20">
           <div className="mb-12">
@@ -313,6 +394,42 @@ export default function About() {
               </motion.div>
             ))}
           </div>
+
+          {/* Certifications */}
+          {CERTIFICATIONS.length > 0 && (
+            <div className="mt-14">
+              <p className={`text-sm uppercase tracking-widest font-semibold ${darkMode ? "text-blue-400" : "text-blue-600"}`}>
+                Continuous learning
+              </p>
+              <h2 className="mt-2 text-2xl sm:text-3xl font-extrabold tracking-tight mb-6">
+                <span className="gradient-text">Certifications</span>
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {CERTIFICATIONS.map((c, i) => (
+                  <motion.div
+                    key={c.title}
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.9 + i * 0.1 }}
+                    className={`p-6 rounded-2xl gradient-border ${darkMode ? "bg-gray-900" : "bg-white"}`}
+                  >
+                    <div className="flex items-start gap-4">
+                      <span className="flex items-center justify-center w-11 h-11 rounded-xl bg-brand-gradient text-white text-lg shadow-glow shrink-0">
+                        <FiAward />
+                      </span>
+                      <div className="min-w-0">
+                        <p className={`text-xs font-mono ${darkMode ? "text-gray-500" : "text-gray-500"}`}>
+                          {c.period} {c.detail && `· ${c.detail}`}
+                        </p>
+                        <h3 className="mt-1 text-base font-bold leading-snug">{c.title}</h3>
+                        <p className={`mt-1 text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>{c.issuer}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </section>
 

@@ -148,7 +148,7 @@ export default function Contact() {
                         <FaGithub size={18} />
                       </a>
                       <a
-                        href="https://www.linkedin.com/in/waseem-shahzad-b4854522a"
+                        href="https://www.linkedin.com/in/WaseemShahzad"
                         target="_blank"
                         rel="noreferrer"
                         aria-label="LinkedIn"

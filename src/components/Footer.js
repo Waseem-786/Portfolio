@@ -13,7 +13,7 @@ const NAV = [
 
 const SOCIAL = [
   { icon: <FaGithub size={18} />, link: "https://github.com/Waseem-786", label: "GitHub" },
-  { icon: <FaLinkedin size={18} />, link: "https://www.linkedin.com/in/waseem-shahzad-b4854522a", label: "LinkedIn" },
+  { icon: <FaLinkedin size={18} />, link: "https://www.linkedin.com/in/WaseemShahzad", label: "LinkedIn" },
   { icon: <FaInstagram size={18} />, link: "https://www.instagram.com/waseeemshahzad/", label: "Instagram" },
 ];
 

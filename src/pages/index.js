@@ -20,65 +20,67 @@ import {
   FaDatabase,
   FaArrowRight,
 } from "react-icons/fa";
-import { SiDjango, SiOracle, SiTailwindcss, SiFlutter, SiJavascript, SiNextdotjs } from "react-icons/si";
-import { FiMail, FiDownload, FiArrowRight } from "react-icons/fi";
+import { SiDjango, SiOracle, SiFlutter, SiNextdotjs, SiTypescript, SiNodedotjs, SiAnthropic, SiGoogle } from "react-icons/si";
+import { FiMail, FiArrowRight } from "react-icons/fi";
 
 const TECH = [
+  { icon: <SiOracle />, name: "FLEXCUBE" },
+  { icon: <FaDatabase />, name: "PL/SQL" },
   { icon: <FaPython />, name: "Python" },
   { icon: <SiDjango />, name: "Django" },
-  { icon: <FaReact />, name: "React" },
+  { icon: <SiNodedotjs />, name: "Node.js" },
+  { icon: <SiTypescript />, name: "TypeScript" },
   { icon: <SiNextdotjs />, name: "Next.js" },
-  { icon: <SiJavascript />, name: "JavaScript" },
+  { icon: <FaReact />, name: "React" },
   { icon: <SiFlutter />, name: "Flutter" },
-  { icon: <SiOracle />, name: "Oracle" },
-  { icon: <FaDatabase />, name: "PL/SQL" },
+  { icon: <SiAnthropic />, name: "Claude API" },
+  { icon: <SiGoogle />, name: "Gemini API" },
   { icon: <FaDocker />, name: "Docker" },
-  { icon: <SiTailwindcss />, name: "Tailwind" },
 ];
 
 const STATS = [
-  { value: "2+", label: "Years Experience" },
-  { value: "15+", label: "Projects Delivered" },
-  { value: "9", label: "Certifications" },
-  { value: "5+", label: "Banks Supported" },
+  { value: "50+", label: "FLEXCUBE Customizations" },
+  { value: "122", label: "Branches Migrated" },
+  { value: "Tier-1", label: "Banks Supported" },
+  { value: "5", label: "Engineers Mentored" },
 ];
 
 const EXPERTISE = [
   {
-    title: "Backend Development",
-    icon: <FaCode />,
-    description:
-      "Designing scalable backend systems with Python, Django, and modern architectural patterns.",
-  },
-  {
-    title: "Oracle Flexcube",
+    title: "Oracle FLEXCUBE",
     icon: <FaCogs />,
     description:
-      "Customization, debugging, and production support for core banking solutions across enterprise clients.",
+      "End-to-end customization and production support across CASA, Lending, ELCM, and PDM for tier-1 banking clients.",
   },
   {
-    title: "REST API Engineering",
+    title: "PL/SQL & SQL Tuning",
+    icon: <FaCode />,
+    description:
+      "Performance work on EOD batches and month-end issues using EXPLAIN PLAN, indexing strategy, and bulk binds.",
+  },
+  {
+    title: "Islamic Banking Conversion",
     icon: <FaNetworkWired />,
     description:
-      "Building secure, well-documented RESTful APIs with Django REST Framework for web and mobile.",
+      "On-site lead for Pakistan's first conventional-to-Islamic conversion on FLEXCUBE — 122 branches migrated.",
   },
   {
-    title: "Debugging & Performance",
-    icon: <FaBug />,
-    description:
-      "Identifying root causes and optimizing complex systems to ensure smooth, predictable performance.",
-  },
-  {
-    title: "API Integration",
+    title: "AI / LLM Integration",
     icon: <FaPlug />,
     description:
-      "Seamlessly wiring third-party services into applications — payments, auth, messaging, analytics.",
+      "Schema-grounded LLM workflows with Google Gemini and Anthropic Claude APIs for SQL and database tooling.",
   },
   {
-    title: "Cross-functional Collaboration",
+    title: "Full-stack Engineering",
+    icon: <FaBug />,
+    description:
+      "Production-grade products with Python/Django, Node.js, Next.js, React, TypeScript, and Electron.",
+  },
+  {
+    title: "Mentorship & Delivery",
     icon: <FaUsers />,
     description:
-      "Translating ambiguous requirements into clear technical plans and shipping with cross-functional teams.",
+      "Mentoring junior engineers, coordinating Agile releases, and acting as liaison between clients and offshore teams.",
   },
 ];
 
@@ -125,7 +127,7 @@ export default function Home() {
                   <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping-slow" />
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
                 </span>
-                Available for new opportunities
+                Open to remote consulting · European banks & fintechs
               </motion.div>
 
               <motion.h1
@@ -136,7 +138,7 @@ export default function Home() {
               >
                 Hi, I'm <span className="gradient-text">Waseem Shahzad</span>
                 <span className="block mt-2 text-2xl sm:text-3xl lg:text-4xl font-semibold opacity-80">
-                  Software Engineer & Application Consultant
+                  Oracle FLEXCUBE Technical Consultant
                 </span>
               </motion.h1>
 
@@ -148,7 +150,7 @@ export default function Home() {
                   darkMode ? "text-gray-400" : "text-gray-600"
                 }`}
               >
-                I build scalable backend systems, ship production-grade REST APIs, and consult on Oracle Flexcube for banks across the region. Turning complex problems into clean, reliable software.
+                Delivering Oracle FLEXCUBE solutions to tier-1 banks — CASA, Lending, ELCM, and PDM. Strong PL/SQL and SQL-tuning expertise complemented by full-stack engineering in Python/Django, Node.js, Next.js, and React.
               </motion.p>
 
               {/* CTAs */}
@@ -191,7 +193,7 @@ export default function Home() {
                 <a href="https://github.com/Waseem-786" target="_blank" rel="noreferrer" aria-label="GitHub" className={`p-2 rounded-full transition-colors ${darkMode ? "hover:bg-white/10" : "hover:bg-gray-100"}`}>
                   <FaGithub size={18} />
                 </a>
-                <a href="https://www.linkedin.com/in/waseem-shahzad-b4854522a" target="_blank" rel="noreferrer" aria-label="LinkedIn" className={`p-2 rounded-full transition-colors ${darkMode ? "hover:bg-white/10" : "hover:bg-gray-100"}`}>
+                <a href="https://www.linkedin.com/in/WaseemShahzad" target="_blank" rel="noreferrer" aria-label="LinkedIn" className={`p-2 rounded-full transition-colors ${darkMode ? "hover:bg-white/10" : "hover:bg-gray-100"}`}>
                   <FaLinkedin size={18} />
                 </a>
                 <a href="mailto:engrwaseemshahzad134@gmail.com" aria-label="Email" className={`p-2 rounded-full transition-colors ${darkMode ? "hover:bg-white/10" : "hover:bg-gray-100"}`}>
@@ -299,7 +301,7 @@ export default function Home() {
                 About me
               </p>
               <h2 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
-                Engineering reliable, <span className="gradient-text">scalable</span> systems.
+                Core banking, <span className="gradient-text">production-grade</span> engineering.
               </h2>
             </motion.div>
             <motion.div
@@ -309,10 +311,10 @@ export default function Home() {
               className="lg:col-span-7"
             >
               <p className={`text-base lg:text-lg leading-relaxed ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
-                I'm a software engineer with a strong foundation in backend development and a passion for solving complex problems. As an Application Consultant for <span className={darkMode ? "text-white" : "text-gray-900"}>Oracle Flexcube</span> at Techlogix, I support leading banks with customizations, optimized PL/SQL, debugging, and performance work. I also build full-stack web and mobile products with Django and modern web frameworks.
+                Technical Application Consultant at <span className={darkMode ? "text-white" : "text-gray-900"}>Techlogix</span>, delivering Core Banking solutions on <span className={darkMode ? "text-white" : "text-gray-900"}>Oracle FLEXCUBE</span> — including key technical contributions to <span className={darkMode ? "text-white" : "text-gray-900"}>Pakistan's first conventional-to-Islamic banking conversion</span>, with 122 branches migrated on-site and migration scripts the client now uses to roll out remaining branches independently.
               </p>
               <p className={`mt-4 text-base lg:text-lg leading-relaxed ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
-                I care about clean, maintainable code, thoughtful API design, and shipping things that work — every day, at scale.
+                Beyond banking, I build in-house automation and full-stack products — most recently shipping an Electron tool that cut deployment review effort by ~30 minutes per change, and an AI-powered Oracle SQL optimizer using Gemini and Claude APIs.
               </p>
               <Link
                 href="/about"
