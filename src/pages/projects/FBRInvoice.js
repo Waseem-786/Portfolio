@@ -10,7 +10,7 @@ export default function FBRInvoice() {
       description="A Node.js client-side invoicing system integrated with Pakistan's Federal Board of Revenue (FBR) e-invoicing APIs — real-time invoice submission, validation, and structured error handling that meets FBR compliance and audit requirements."
       tags={["Node.js", "REST APIs", "FBR e-Invoicing", "JavaScript"]}
       hero={{ placeholder: true, icon: <FiFileText />, accent: "from-emerald-500 via-teal-500 to-cyan-500" }}
-      github="https://github.com/Waseem-786"
+      github="https://github.com/Waseem-786/FBR_Project"
       overview={{
         problem:
           "Pakistan's FBR mandates real-time e-invoice submission for tax compliance. Manual entry into the FBR portal is slow and error-prone, and most off-the-shelf accounting tools don't ship with a tested FBR-native integration.",

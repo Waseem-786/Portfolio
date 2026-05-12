@@ -10,7 +10,7 @@ export default function CustomizationUnitsManager() {
       description="A cross-platform Electron + React + TypeScript desktop tool for Oracle FLEXCUBE on-site deployment teams — track, version, and validate customization units across raw and final environments. Cut deployment review effort by ~30 minutes per change."
       tags={["Electron", "React", "TypeScript", "Monaco Editor", "jsdiff", "electron-builder"]}
       hero={{ placeholder: true, icon: <FiTool />, accent: "from-indigo-500 via-violet-500 to-fuchsia-500" }}
-      github="https://github.com/Waseem-786"
+      github="https://github.com/Waseem-786/Customization_Units_Manager"
       overview={{
         problem:
           "On FLEXCUBE deployments, every customization change requires a paired senior–junior review of raw vs. final environments. Manually diffing files is slow, error-prone, and turns release prep into a bottleneck — particularly close to cutover.",

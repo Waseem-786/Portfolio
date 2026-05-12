@@ -10,7 +10,7 @@ export default function RestaurantManagementSystem() {
       description="Java JSwing desktop application that streamlines restaurant operations — order entry, dine-in & takeaway flows, table selection, and automated billing."
       tags={["Java", "JSwing", "MySQL"]}
       hero={{ image: "/RMS/Dashboard.jpg" }}
-      github="https://github.com/Waseem-786/Restaurant-Management-System.git"
+      github="https://github.com/Waseem-786/Restaurant-Management-System"
       demoVideo="/RMS/RMS_Video.mp4"
       overview={{
         problem:

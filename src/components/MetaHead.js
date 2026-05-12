@@ -22,8 +22,10 @@ export default function MetaHead({
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <link rel="icon" href="/Icon/hex.ico" />
-      <link rel="apple-touch-icon" href="/Icon_png/hex.png" />
+      <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+      <link rel="alternate icon" href="/Icon/hex.ico" />
+      <link rel="apple-touch-icon" href="/favicon.svg" />
+      <link rel="mask-icon" href="/favicon.svg" color="#6366f1" />
     </Head>
   );
 }

@@ -121,6 +121,7 @@ export default function ProjectLayout({
   github,
   demoVideo,
   overview, // { problem, solution: string | { intro?, bullets: [] } }
+  stats = [], // [{ value, label, note? }]
   techStack = [], // [{ name, icon }]
   externalLibraries = [], // [{ name, description }]
   features = [], // [{ title, description, bullets?, image?, images? }]
@@ -333,6 +334,36 @@ export default function ProjectLayout({
                   )}
                 </motion.div>
               )}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* STATS */}
+      {stats.length > 0 && (
+        <section className={darkMode ? "bg-gray-950 border-y border-white/5" : "bg-white border-y border-gray-200"}>
+          <div className="max-w-7xl mx-auto px-6 lg:px-8 py-14">
+            <div className={`grid ${stats.length === 4 ? "grid-cols-2 lg:grid-cols-4" : "grid-cols-2 lg:grid-cols-3"} gap-x-6 gap-y-10`}>
+              {stats.map((s, i) => (
+                <motion.div
+                  key={`${s.label}-${i}`}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.5, delay: i * 0.08 }}
+                  className="text-center"
+                >
+                  <div className="text-3xl sm:text-4xl lg:text-5xl font-extrabold gradient-text leading-none tracking-tight">
+                    {s.value}
+                  </div>
+                  <div className={`mt-3 text-xs uppercase tracking-widest font-semibold ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
+                    {s.label}
+                  </div>
+                  {s.note && (
+                    <div className={`mt-1.5 text-[11px] ${mutedTextCls}`}>{s.note}</div>
+                  )}
+                </motion.div>
+              ))}
             </div>
           </div>
         </section>
